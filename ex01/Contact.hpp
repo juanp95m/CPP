@@ -2,6 +2,7 @@
 # define CONTACT_HPP
 
 # include <string>
+# include <iostream>
 
 class Contact {
 private:
@@ -10,18 +11,20 @@ private:
 	std::string _nickname;
 	std::string _phoneNumber;
 	std::string _darkestSecret;
-
-
 public:
 	Contact(void);
 	~Contact(void);
 	
-	void setFirstName(std::string firstName);
-	void setLastName(std::string lastName);
-	void setNickName(std::string nickName);
-	void setPhoneNumber(std::string phoneNumber);
-	void setDarkestSecret(std::string darkestSecret);
 	std::string getFirstName(void) const;
-
+	std::string getLastName(void) const;
+	std::string getNickName(void) const;
+	std::string getPhoneNumber(void) const;
+	std::string getDarkestSecret(void) const;
+	void	setFirstName(std::string firstName);
+	void	setLastName(std::string lastName);
+	void	setNickName(std::string nickName);
+	void	setPhoneNumber(std::string phoneNumber);
+	void	setDarkestSecret(std::string darkestSecret);
 };
+
 #endif
