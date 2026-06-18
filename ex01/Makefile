@@ -1,5 +1,5 @@
 # Name of executable
-NAME = megaphone
+NAME = PhoneBook
 
 # Compilation flags
 CXX = c++
@@ -7,7 +7,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Sources
 SRCS = PhoneBook.cpp Contact.cpp main.cpp
-	Contact.
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Main rule
