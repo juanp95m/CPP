@@ -32,7 +32,7 @@ void PhoneBook::addContact(void){
 	if (std::cin.eof())
 		std::cout << std::endl;
 	_contacts[_index].setPhoneNumber(temp);
-	std::cout << "Secret Number: ";
+	std::cout << "Darkest secret: ";
 	std::getline(std::cin, temp);
 	if (std::cin.eof())
 		std::cout << std::endl;
@@ -77,11 +77,11 @@ void PhoneBook::searchContact(void) const{
 	if (num < 0 || num >=_count)
 		std::cout << "Error: Out of range, try again" << std::endl;
 	else{
-		std::cout << this->_contacts[num].getFirstName() << std::endl;
-		std::cout << this->_contacts[num].getLastName() << std::endl;
-		std::cout << this->_contacts[num].getNickName() << std::endl;
-		std::cout << this->_contacts[num].getPhoneNumber() << std::endl;
-		std::cout << this->_contacts[num].getDarkestSecret() << std::endl;
+		std::cout << "First Name: " << this->_contacts[num].getFirstName() << std::endl;
+		std::cout << "Last name: " << this->_contacts[num].getLastName() << std::endl;
+		std::cout << "Nick name: " << this->_contacts[num].getNickName() << std::endl;
+		std::cout << "Phone number: " << this->_contacts[num].getPhoneNumber() << std::endl;
+		std::cout << "Darkest secret: " << this->_contacts[num].getDarkestSecret() << std::endl;
 	}
 }
 
