@@ -20,7 +20,8 @@ public:
 
 	// Métodos principales que llamará el main
 	void addContact(void);
-	void searchContact(void);
+	void printTable(void) const;
+	void searchContact(void) const;
 
 };
 
