@@ -9,9 +9,8 @@ int main(void)
 	{
 		std::cout << "Write a command (ADD, SEARCH, EXIT): ";
 		if (!std::getline(std::cin, input)) {
-			break ; // Esto te protege del Ctrl+D de forma limpia
+			break ;
 		}
-		
 		if (input == "ADD") {
 			book.addContact();
 		}
