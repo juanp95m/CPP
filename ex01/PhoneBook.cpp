@@ -3,11 +3,9 @@
 PhoneBook::PhoneBook(void){
 	this->_index = 0;
 	this->_count = 0;
-	return ;
 }
 
 PhoneBook::~PhoneBook(void){
-	return ;
 }
 
 void PhoneBook::addContact(void){
