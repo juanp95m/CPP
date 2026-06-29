@@ -34,13 +34,15 @@ Account::Account(int initial_deposit){
 	_nbAccounts++;
 	_totalAmount += initial_deposit;
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << "amount:" << this->_amount << "created" << std::endl;
+	std::cout << "index:" << this->_accountIndex 
+			<< ";amount:" << this->_amount << ";created" << std::endl;
 }
 
 //destructor
 Account::~Account(){
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
+	std::cout << "index:" << this->_accountIndex << ";amount:" 
+			<< this->_amount << ";closed" << std::endl;
 	this->_nbAccounts--;
 	_totalAmount -= this->_amount;
 }	
@@ -65,7 +67,9 @@ int Account::getTotalAmount(){
 // Su objetivo es pintar en la terminal una línea que resuma el estado de todo el banco en ese instante preciso
 void Account::displayAccountsInfos(){
 	Account::_displayTimestamp();
-	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount 
+			<< ";deposits:" << _totalNbDeposits 
+			<< ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
 
@@ -141,7 +145,7 @@ void Account::_displayTimestamp(){
 	std::tm *tme = std::localtime(&finalTime);
 	char buffer[20];
 	std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", tme);
-	std::cout << buffer;
+	std::cout << buffer << " ";
 }
 // FUNCION VOID Account::_displayTimestamp()
 //     1. Crear una variable de tipo 'time_t' para obtener el tiempo actual del sistema.
@@ -153,7 +157,10 @@ void Account::_displayTimestamp(){
 // FIN FUNCIÓN
 
 void Account::displayStatus() const{
-
+	Account::_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount 
+			<< ";deposits:" << _nbDeposits 
+			<< ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 // FUNCION VOID Account::displayStatus() CONST
