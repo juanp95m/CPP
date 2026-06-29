@@ -19,6 +19,7 @@
 
 
 // inicializacion de variables/atributos
+
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
@@ -45,12 +46,13 @@ Account::~Account(){
 			<< this->_amount << ";closed" << std::endl;
 	this->_nbAccounts--;
 	_totalAmount -= this->_amount;
-}	
+}
+
+//-----GETTERS-------
 
 int Account::getNbAccounts(){
 	return (_nbAccounts);
 }
-//-----GETTERS-------
 int Account::getNbDeposits(){
 	return (_totalNbDeposits);
 }
@@ -91,54 +93,25 @@ void Account::makeDeposit(int deposit){
 
 bool Account::makeWithdrawal(int withdrawal){
 	Account::_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount;
+	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount;      // 1. Mostrar la primera parte del mensaje (Identidad y saldo previo)
 
 	if (withdrawal > this->_amount){
-		std::cout << ";withdrawal:refused" << std::endl;
+		std::cout << ";withdrawal:refused" << std::endl;                                // 2. Comprobar si hay suficiente dinero (Control de errores)
 		return (false);
 	}
 	else{
 		std::cout << ";withdrawal:" << withdrawal;
-		this->_amount -= withdrawal;
+		this->_amount -= withdrawal;                                                    // 3. Si llega aquí, el retiro SÍ es válido. Hacer los cálculos:
 		this->_nbWithdrawals++;
 
-		_totalAmount -= withdrawal;
+		_totalAmount -= withdrawal;                                                     // 4. Actualizar las estadísticas globales del BANCO (Estáticas)
 		_totalNbWithdrawals++;
 
 		std::cout << ";amount:" << _amount 
-				<< ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+				<< ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;             // 5. Mostrar el resultado final en la misma línea
 	}
 	return (true);
 }
-
-
-
-// FUNCION BOOLEANA Account::makeWithdrawal(entero withdrawal)
-//     // 1. Mostrar la primera parte del mensaje (Identidad y saldo previo)
-//     Llamar a Account::_displayTimestamp()
-//     Imprimir "index:" seguido de _accountIndex, y ";p_amount:" seguido de _amount
-
-//     // 2. Comprobar si hay suficiente dinero (Control de errores)
-//     SI el 'withdrawal' es mayor que el saldo actual (_amount):
-//         Imprimir ";withdrawal:refused" seguido de un salto de línea (std::endl)
-//         DEVOLVER false (Fin de la función, no se hace ningún cambio)
-
-//     // 3. Si llega aquí, el retiro SÍ es válido. Hacer los cálculos:
-//     Sumar el texto ";withdrawal:" seguido de la variable withdrawal a la línea actual
-//     Restar withdrawal al saldo de la cuenta (_amount)
-//     Incrementar en 1 el contador de retiros de ESTA cuenta (_nbWithdrawals)
-
-//     // 4. Actualizar las estadísticas globales del BANCO (Estáticas)
-//     Restar withdrawal al dinero total del banco (_totalAmount)
-//     Incrementar en 1 el contador total de retiros del banco (_totalNbWithdrawals)
-
-//     // 5. Mostrar el resultado final en la misma línea
-//     Imprimir ";amount:" seguido del nuevo saldo (_amount), y ";nb_withdrawals:" seguido de _nbWithdrawals
-//     Terminar con un salto de línea (std::endl)
-    
-//     DEVOLVER true
-// FIN FUNCIÓN
-
 
 void Account::_displayTimestamp(){
 	std::time_t	finalTime = time(NULL);
@@ -147,14 +120,6 @@ void Account::_displayTimestamp(){
 	std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", tme);
 	std::cout << buffer << " ";
 }
-// FUNCION VOID Account::_displayTimestamp()
-//     1. Crear una variable de tipo 'time_t' para obtener el tiempo actual del sistema.
-//     2. Llamar a la función 'time()' pasándole esa variable.
-//     3. Convertir ese tiempo a la estructura local 'tm' usando la función 'localtime()'.
-//     4. Crear un búfer de caracteres (char buffer[20]) para almacenar el texto formateado.
-//     5. Utilizar la función 'strftime()' para darle el formato exacto: "[%Y%m%d_%H%M%S]"
-//     6. Imprimir ese búfer en la pantalla usando std::cout (¡sin saltos de línea!).
-// FIN FUNCIÓN
 
 void Account::displayStatus() const{
 	Account::_displayTimestamp();
@@ -162,15 +127,3 @@ void Account::displayStatus() const{
 			<< ";deposits:" << _nbDeposits 
 			<< ";withdrawals:" << _nbWithdrawals << std::endl;
 }
-
-// FUNCION VOID Account::displayStatus() CONST
-//     // 1. Mostrar el sello de tiempo obligatorio
-//     Llamar a Account::_displayTimestamp()
-    
-//     // 2. Imprimir los datos actuales de ESTA cuenta concreta en una sola línea
-//     Imprimir "index:" seguido de _accountIndex
-//     Imprimir ";amount:" seguido del saldo actual (_amount)
-//     Imprimir ";deposits:" seguido de cuántos depósitos lleva (_nbDeposits)
-//     Imprimir ";withdrawals:" seguido de cuántos retiros lleva (_nbWithdrawals)
-//     Terminar con un salto de línea (std::endl)
-// FIN FUNCIÓN
