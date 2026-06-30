@@ -74,6 +74,21 @@ void Account::displayAccountsInfos(){
 			<< ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
+void Account::_displayTimestamp(){
+	std::time_t	finalTime = time(NULL);
+	std::tm *tme = std::localtime(&finalTime);
+	char buffer[20];
+	std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", tme);
+	std::cout << buffer << " ";
+}
+
+void Account::displayStatus() const{
+	Account::_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount 
+			<< ";deposits:" << _nbDeposits 
+			<< ";withdrawals:" << _nbWithdrawals << std::endl;
+}
+
 
 void Account::makeDeposit(int deposit){
 	Account::_displayTimestamp();
@@ -111,19 +126,4 @@ bool Account::makeWithdrawal(int withdrawal){
 				<< ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;             // 5. Mostrar el resultado final en la misma línea
 	}
 	return (true);
-}
-
-void Account::_displayTimestamp(){
-	std::time_t	finalTime = time(NULL);
-	std::tm *tme = std::localtime(&finalTime);
-	char buffer[20];
-	std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", tme);
-	std::cout << buffer << " ";
-}
-
-void Account::displayStatus() const{
-	Account::_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount 
-			<< ";deposits:" << _nbDeposits 
-			<< ";withdrawals:" << _nbWithdrawals << std::endl;
 }
