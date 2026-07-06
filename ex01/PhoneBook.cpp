@@ -10,30 +10,50 @@ PhoneBook::~PhoneBook(void){
 
 void PhoneBook::addContact(void){
 	std::string temp;
-	std::cout << "First name: ";
-	std::getline(std::cin, temp);
-	if (std::cin.eof())
-		std::cout << std::endl;
+	do {
+		std::cout << "First name: ";
+		std::getline(std::cin, temp);
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			return ;
+		}
+	} while (temp.empty());
 	_contacts[_index].setFirstName(temp);
-	std::cout << "Last Name: ";
-	std::getline(std::cin, temp);
-	if (std::cin.eof())
-		std::cout << std::endl;
+	do {
+		std::cout << "Last Name: ";
+		std::getline(std::cin, temp);
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			return ;
+		}
+	} while (temp.empty());
 	_contacts[_index].setLastName(temp);
-	std::cout << "Nick name: ";
-	std::getline(std::cin, temp);
-	if (std::cin.eof())
-		std::cout << std::endl;
+	do {
+		std::cout << "Nick name: ";
+		std::getline(std::cin, temp);
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			return ;
+		}
+	} while (temp.empty());
 	_contacts[_index].setNickName(temp);
-	std::cout << "Phone number: ";
-	std::getline(std::cin, temp);
-	if (std::cin.eof())
-		std::cout << std::endl;
+	do {
+		std::cout << "Phone number: ";
+		std::getline(std::cin, temp);
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			return ;
+		}
+	} while (temp.empty());
 	_contacts[_index].setPhoneNumber(temp);
-	std::cout << "Darkest secret: ";
-	std::getline(std::cin, temp);
-	if (std::cin.eof())
-		std::cout << std::endl;
+	do {
+		std::cout << "Darkest secret: ";
+		std::getline(std::cin, temp);
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			return ;
+		}
+	} while (temp.empty());
 	_contacts[_index].setDarkestSecret(temp);
 	_index = (_index + 1) % 8;
 	if (_count < 8)
