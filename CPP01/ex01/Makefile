@@ -6,7 +6,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Sources
-SRCS = main.cpp ZombieHorde.CPP Zombie.cpp
+SRCS = main.cpp ZombieHorde.cpp Zombie.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
