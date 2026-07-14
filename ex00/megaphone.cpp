@@ -7,14 +7,14 @@ int main(int argc, char **argv)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	}
 	else {
-		bool	isascii = true;
+		bool	isascii = false;
 		for (int i = 1; i < argc; i++){
 			for (int j = 0; argv[i][j]; j++){
 				if ((unsigned char)argv[i][j] > 127)
-					isascii = false;
+					isascii = true;
 			}
 		}
-		if (!isascii){
+		if (isascii){
 			std::cout << "Error, only ascii." << std::endl;
 			return (1);
 		}
