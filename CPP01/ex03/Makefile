@@ -6,7 +6,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Sources
-SRCS = HumanA.hpp HumanB.cpp HumanB.hpp main.cpp Makefile Weapon.cpp Weapon.hpp
+SRCS = HumanA.cpp HumanB.cpp main.cpp Makefile Weapon.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
