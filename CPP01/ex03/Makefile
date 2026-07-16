@@ -1,12 +1,12 @@
 # Name of executable
-NAME = Weapon
+NAME = weapon
 
 # Compilation flags
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Sources
-SRCS = HumanA.cpp HumanB.cpp main.cpp Makefile Weapon.cpp
+SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
