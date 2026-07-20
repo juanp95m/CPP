@@ -6,7 +6,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Sources
-SRCS = main.cpp
+SRCS = main.cpp replace.cpp openfiles.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
