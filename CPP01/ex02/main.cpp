@@ -16,5 +16,7 @@ int main(void){
     std::cout << myVariable << std::endl;  //(Valor de la variable original)
     std::cout << stringREF << std::endl;   //(Valor de la referencia)
 
+
+    std::cout << &stringPTR << std::endl;
     return 0;
 }
