@@ -54,5 +54,43 @@ newLine += line.substr(21) -> Como ya no queda texto después del 21, no añade 
 Imprime en el archivo: "Un gato y otro gato".
 
 
+Sí. En replace.cpp lo importante es la función replaceLine, que reemplaza todas las apariciones de s1 por s2 dentro de una línea.
+
+1. std::string replaceLine(std::string line, const std::string &s1, const std::string &s2)
+Declara una función que recibe:
+
+line: la línea original
+s1: el texto que se quiere buscar
+s2: el texto que se quiere poner en su lugar
+2. std::string newLine;
+Crea una cadena vacía donde se irá construyendo la línea nueva.
+
+3. size_t pos = 0;
+Marca desde qué posición empezar a buscar dentro de line.
+
+4. size_t found;
+Variable donde se guardará la posición donde se encuentre s1.
+
+5. while ((found = line.find(s1, pos)) != std::string::npos)
+Busca s1 dentro de line empezando desde pos.
+Si lo encuentra, entra al bucle.
+Si no lo encuentra, sale.
+
+6. newLine += line.substr(pos, found - pos);
+Añade a newLine todo lo que hay desde pos hasta justo antes de la coincidencia.
+O sea, copia la parte de la línea que no cambia.
+
+7. newLine += s2;
+En vez de s1, mete s2.
+
+8. pos = found + s1.length();
+Avanza la posición de búsqueda hasta después del texto que acabas de reemplazar.
+
+9. newLine += line.substr(pos);
+Cuando ya no quedan más coincidencias, añade el resto de la línea original que falta por copiar.
+
+10. return newLine;
+Devuelve la línea ya modificada.
+
 */
 
