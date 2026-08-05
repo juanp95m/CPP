@@ -1,27 +1,39 @@
-# Resumen del Proyecto: ex01
-Generado el: 2026-07-31 15:43:11
+# Resumen del Proyecto: ex02
+Generado el: 2026-08-05 18:47:17
 
 ## Estructura de Archivos Incluidos
 ```
-  - ex01/Fixed.cpp
-  - ex01/main.cpp
+  - ex02/Fixed.cpp
+  - ex02/main.cpp
 ```
 
 ## Contenido de los Archivos
 
-### Archivo: `ex01/Fixed.cpp`
+### Archivo: `ex02/Fixed.cpp`
 ```cpp
 #include "Fixed.hpp"
-
+/*
+Es el constructor por defecto. Crea un objeto con valor 0 y deja el atributo 
+interno inicializado en 0. Sirve cuando haces algo como Fixed a;
+*/
 Fixed::Fixed() : _fixedPointValue(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
+/*
+Es el constructor de copia. Crea un objeto nuevo copiando el contenido de otro 
+objeto Fixed. Se usa cuando inicializas un objeto a partir de otro, como Fixed b(a)
+*/
 Fixed::Fixed(const Fixed &other) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
+/*
+Es el operador de asignación. Sirve para copiar el valor de un objeto ya existente 
+sobre otro ya creado, como c = a;. Primero comprueba que no sea autoasignación y 
+luego copia el valor interno
+*/
 Fixed &Fixed::operator=(const Fixed &other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
@@ -29,67 +41,175 @@ Fixed &Fixed::operator=(const Fixed &other) {
 	return *this;
 }
 
+
+/*
+Es el destructor. Se ejecuta cuando el objeto deja de existir.
+*/
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
+
+/*
+Constructor que recibe un entero. Convierte ese entero al formato fixed-point 
+moviendo el valor 8 bits a la izquierda. Por ejemplo, 10 pasa a almacenarse como 10 × 256.
+*/
 Fixed::Fixed(const int value) {
 	std::cout << "Int constructor called" << std::endl;
 	this->_fixedPointValue = value << _fractionalBits;
 }
 
+
+/*
+Constructor que recibe un float. Convierte el decimal al formato fixed-point multiplicando 
+por 256 y redondeando al entero más cercano. Así puedes crear objetos como Fixed c(42.42f);
+*/
 Fixed::Fixed(const float value) {
 	std::cout << "Float constructor called" << std::endl;
 	this->_fixedPointValue = static_cast<int>(roundf(value * (1 << _fractionalBits)));
 }
 
+
+/*
+Devuelve el valor interno crudo, sin convertirlo a entero normal ni a float. 
+Sirve para inspeccionar directamente lo que está guardado en _fixedPointValue.
+*/
 int Fixed::getRawBits(void) const {
 	return this->_fixedPointValue;
 }
 
+/*
+Cambia directamente el valor interno crudo. Es un setter bajo nivel.
+*/
 void Fixed::setRawBits(int const raw) {
 	this->_fixedPointValue = raw;
 }
 
+
+/*
+Convierte el valor almacenado al número decimal real. Divide el entero interno 
+entre 256 y devuelve un float.
+*/
 float Fixed::toFloat(void) const {
 	return static_cast<float>(this->_fixedPointValue) / (1 << _fractionalBits);
 }
 
+/*
+Convierte el valor almacenado a entero truncando la parte fraccionaria. 
+Básicamente elimina los 8 bits fraccionales.
+*/
 int Fixed::toInt(void) const {
 	return this->_fixedPointValue >> _fractionalBits;
 }
 
+/*
+Es el operador de salida para poder imprimir un objeto Fixed con std::cout. 
+En vez de mostrar el valor crudo, imprime el resultado de toFloat().
+*/
 std::ostream &operator<<(std::ostream &out, const Fixed &value) {
 	out << value.toFloat();
 	return out;
 }
 
+
+bool Fixed::operator>(const Fixed &other) const {
+	return (this->_fixedPointValue > other._fixedPointValue);
+}
+
+bool Fixed::operator<(const Fixed &other) const {
+	return (this->_fixedPointValue < other._fixedPointValue);
+}
+
+bool Fixed::operator>=(const Fixed &other) const {
+	return (this->_fixedPointValue >= other._fixedPointValue);
+}
+
+bool Fixed::operator<=(const Fixed &other) const {
+	return (this->_fixedPointValue <= other._fixedPointValue);
+}
+
+bool Fixed::operator==(const Fixed &other) const{
+	return (this->_fixedPointValue == other._fixedPointValue);
+}
+
+bool Fixed::operator!=(const Fixed &other) const {
+	return (this->_fixedPointValue != other._fixedPointValue);
+}
+
+Fixed Fixed::operator+(const Fixed &other) const {
+	return Fixed(this->toFloat() + other.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed &other) const {
+	return Fixed(this->toFloat() - other.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed &other) const {
+	return Fixed(this->toFloat() * other.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &other) const {
+	return Fixed(this->toFloat() / other.toFloat());
+}
+
+Fixed &Fixed::operator++(){
+	++_fixedPointValue;
+	return *this;
+}
+
+Fixed Fixed::operator++(int){
+	Fixed temp(*this);
+	++(*this);
+	return temp;
+}
+
+Fixed &Fixed::operator--(){
+	--_fixedPointValue;
+	return *this;
+}
+
+Fixed Fixed::operator--(int){
+	Fixed temp(*this);
+	--(*this);
+	return temp;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b){
+	return a < b ? a : b;
+}
+
+const &Fixed Fixed::min(const Fixed &a, const Fixed &b){
+
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b){
+
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b){
+
+}
 ```
 
-### Archivo: `ex01/main.cpp`
+### Archivo: `ex02/main.cpp`
 ```cpp
 #include "Fixed.hpp"
 
-int main (void)
-{
-    Fixed a;
-    Fixed const b(10);
-    Fixed const c(42.42f);
-    Fixed const d(b);
-
-    a = Fixed(1234.43f);
-
-    std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b << std::endl;
-    std::cout << "c is " << c << std::endl;
-    std::cout << "d is " << d << std::endl;
-    
-    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
-    return (0);
+int main( void ) {
+	Fixed		a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	
+	std::cout << b << std::endl;
+	
+	std::cout << Fixed::max( a, b ) << std::endl;
+	
+	return 0;
 }
 ```
 
