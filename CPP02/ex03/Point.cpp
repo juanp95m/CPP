@@ -11,11 +11,11 @@ Point &Point::operator=(const Point &other){
 	return *this;
 }
 
-Fixed Point::getx() const {
+Fixed Point::getX() const {
 	return this->_x;
 }
 
-Fixed Point::gety() const {
+Fixed Point::getY() const {
 	return this->_y;
 }
 
