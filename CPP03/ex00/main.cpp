@@ -2,9 +2,9 @@
 
 int main(void){
 	ClapTrap clapitrapi("robotito");
-	std::string enemie;
+	std::string enemy;
 
-	clapitrapi.attack("enemie");
+	clapitrapi.attack("enemy");
 
 	clapitrapi.takeDamage(5);
 
@@ -12,7 +12,7 @@ int main(void){
 
 	clapitrapi.takeDamage(20);
 
-	clapitrapi.attack("enemie");
+	clapitrapi.attack("enemy");
 
 	return 0;
 }
