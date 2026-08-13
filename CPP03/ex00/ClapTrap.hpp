@@ -16,7 +16,7 @@ class ClapTrap {
 		ClapTrap();
 		ClapTrap(const std::string &name); // constructor parametrizado
 		ClapTrap(const ClapTrap &copy); // constructor de copia
-		ClapTrap &operator=(const ClapTrap &other); // operador de asignacion
+		ClapTrap &operator=(const ClapTrap &copy); // operador de asignacion
 		~ClapTrap();
 
 		void attack(const std::string &target);
