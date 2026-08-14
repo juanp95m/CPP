@@ -33,11 +33,21 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &copy){
 }
 
 ScavTrap::~ScavTrap(){
-	std::cout << " ScavTrap " << _name << "has been destroyed!" << std::endl;
+	std::cout << "ScavTrap " << _name << " has been destroyed!" << std::endl;
 }
 
-ScavTrap:: 
+void ScavTrap:: attack(const std::string &target) {
+	if (_hitPoints == 0 || _energyPoints == 0){
+		std::cout << "ScavTrap " << _name  << "without energy or life" <<std::endl; 
+	}
+	else {
+		_energyPoints--;
+		std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
+
+	}
+}
+
 
 void ScavTrap::guardGate() {
-	std::cout  << "ScavTrap " << _name << "is now in Gate keeper mode" << std::endl;
+	std::cout  << "ScavTrap " << _name << " is now in Gate keeper mode" << std::endl;
 }

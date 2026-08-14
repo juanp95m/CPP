@@ -55,5 +55,5 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap " << _name << " has been deleted" <<std::endl;
+	std::cout << "ClapTrap " << _name << " has been destroyed!" <<std::endl;
 }

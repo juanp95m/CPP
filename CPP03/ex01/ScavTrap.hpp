@@ -14,7 +14,7 @@ class ScavTrap : public ClapTrap {
 		~ScavTrap();
 
 	// 2. Sobrescribir el método de ataque (porque ScavTrap imprime un mensaje diferente)
-        void attack(const std::string &target);
+		void attack(const std::string &target);
 	// 3. Habilidad especial propia de ScavTrap
 		void guardGate();
 };
