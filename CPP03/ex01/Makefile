@@ -1,5 +1,5 @@
 # Name of executable
-NAME = ClapTrap
+NAME = ScavTrap
 
 # Compilation flags
 CXX = c++
