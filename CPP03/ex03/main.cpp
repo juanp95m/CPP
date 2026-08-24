@@ -1,14 +1,15 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-int main (void) {
-	
-	FragTrap frag("Fraggy");
+int main(void) {
+	std::cout << "--- CREATING DIAMONDTRAP ---" << std::endl;
+	DiamondTrap monster("Monster");
 
-	frag.attack("Target");
-	frag.takeDamage(50);
-	frag.beRepaired(20);
-	frag.highFivesGuys();
+	std::cout << "\n--- TESTING WHOAMI ---" << std::endl;
+	monster.whoAmI();
 
-	return (0);
+	std::cout << "\n--- TESTING ATACK (FROM SCAVTRAP) ---" << std::endl;
+	monster.attack("Target");
 
+	std::cout << "\n--- DESTRUCTION ---" << std::endl;
+	return 0;
 }
