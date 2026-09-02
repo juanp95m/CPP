@@ -19,7 +19,7 @@ sobre otro ya creado, como c = a;. Primero comprueba que no sea autoasignación 
 luego copia el valor interno
 */
 Fixed &Fixed::operator=(const Fixed &other) {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 		this->_fixedPointValue = other._fixedPointValue;
 	return *this;
@@ -132,22 +132,26 @@ Fixed Fixed::operator/(const Fixed &other) const {
 	return Fixed(this->toFloat() / other.toFloat());
 }
 
+//pre++
 Fixed &Fixed::operator++(){
 	++_fixedPointValue;
 	return *this;
 }
 
+//post++
 Fixed Fixed::operator++(int){
 	Fixed temp(*this);
 	++(*this);
 	return temp;
 }
 
+//pre--
 Fixed &Fixed::operator--(){
 	--_fixedPointValue;
 	return *this;
 }
 
+//post--
 Fixed Fixed::operator--(int){
 	Fixed temp(*this);
 	--(*this);
