@@ -1,7 +1,7 @@
 #include "Point.hpp"
 
 
-// Función auxiliar para calcular el producto cruzado 2D
+// Función auxiliar para calcular el producto cruzado 2D esta al lado derecho o izquierdo o justo en la arista?
 static Fixed area(Point const p1, Point const p2, Point const p) {
 	return (p1.getX() - p.getX()) * (p2.getY() - p.getY()) - (p2.getX() - p.getX()) * (p1.getY() - p.getY());
 }
