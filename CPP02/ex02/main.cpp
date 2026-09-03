@@ -16,3 +16,22 @@ int main( void ) {
 	
 	return 0;
 }
+/*
+Fixed x(10);
+Fixed y(5);
+
+std::cout << "x > y: " << (x > y) << std::endl;
+std::cout << "x < y: " << (x < y) << std::endl;
+std::cout << "x >= y: " << (x >= y) << std::endl;
+std::cout << "x <= y: " << (x <= y) << std::endl;
+std::cout << "x == y: " << (x == y) << std::endl;
+std::cout << "x != y: " << (x != y) << std::endl;
+
+std::cout << "x + y: " << x + y << std::endl;
+std::cout << "x - y: " << x - y << std::endl;
+std::cout << "x * y: " << x * y << std::endl;
+std::cout << "x / y: " << x / y << std::endl;
+
+std::cout << "min: " << Fixed::min(x, y) << std::endl;
+std::cout << "max: " << Fixed::max(x, y) << std::endl;
+*/
