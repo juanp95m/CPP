@@ -37,13 +37,13 @@ ScavTrap::~ScavTrap(){
 }
 
 void ScavTrap:: attack(const std::string &target) {
-	if (_hitPoints == 0 || _energyPoints == 0){
-		std::cout << "ScavTrap " << _name  << "without energy or life" <<std::endl; 
-	}
+	if (_hitPoints == 0)
+		std::cout << "ScavTrap " << _name  << "It has no life, so it cannot attack" <<std::endl;
+	else if (_energyPoints == 0)
+		std::cout << "ScavTrap " << _name  << "It has no energy, so it cannot attack" <<std::endl;
 	else {
 		_energyPoints--;
 		std::cout << "ScavTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
-
 	}
 }
 

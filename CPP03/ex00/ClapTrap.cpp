@@ -24,10 +24,10 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy) {
 }
 
 void ClapTrap::attack(const std::string &target) {
-	if (_hitPoints == 0 || _energyPoints == 0){
-		std::cout << "It doesn't have enough energy or life" << std::endl;
-		return;
-	}
+	if (_hitPoints == 0)
+		std::cout << "ClapTrap " << _name  << "It has no life, so it cannot attack" <<std::endl;
+	else if (_energyPoints == 0)
+		std::cout << "ClapTrap " << _name  << "It has no energy, so it cannot attack" <<std::endl;
 	else {
 		_energyPoints--;
 		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
