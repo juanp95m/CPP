@@ -14,7 +14,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &copy) {
-	if (this != &copy) { // evitamos la autoasignacion (a = a)
+	if (this != &copy) {
 		this->_name	= copy._name;
 		this->_hitPoints = copy._hitPoints;
 		this->_energyPoints = copy._energyPoints;
