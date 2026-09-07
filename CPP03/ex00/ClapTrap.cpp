@@ -35,14 +35,14 @@ void ClapTrap::attack(const std::string &target) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (_hitPoints == 0 || _energyPoints == 0){
-		std::cout << "ClapTrap " << _name << " without energy or life" << std::endl;
-		return;
-	}
-	else if (_hitPoints > 0 && _energyPoints > 0){
+	if (_hitPoints <= 0)
+		std::cout << "ClapTrap " << _name << "It has no life, so it cannot be repaired" << std::endl;
+	else if (_energyPoints <= 0)
+		std::cout << "ClapTrap " << _name << "It has no energy, so it cannot be reparired" << std::endl;
+	else if (_hitPoints > 0 && _energyPoints > 0) {
 		_energyPoints--;
 		_hitPoints += amount;
-		std::cout << "ClapTrap " << _name << " has been repaired" << std::endl;
+		std::cout << "ClapTrap " << _name << "Has been repaired" << std::endl;
 	}
 }
 

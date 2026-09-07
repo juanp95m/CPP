@@ -2,7 +2,7 @@
 
 int main(void) {
 	std::cout << "--- CREATING DIAMONDTRAP ---" << std::endl;
-	DiamondTrap monster("Monster");
+	DiamondTrap monster("Dracula");
 
 	std::cout << "\n--- TESTING WHOAMI ---" << std::endl;
 	monster.whoAmI();
