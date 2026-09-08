@@ -25,9 +25,9 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy) {
 
 void ClapTrap::attack(const std::string &target) {
 	if (_hitPoints == 0)
-		std::cout << "ClapTrap " << _name  << "It has no life, so it cannot attack" <<std::endl;
+		std::cout << "ClapTrap " << _name  << " It has no life, so it cannot attack" <<std::endl;
 	else if (_energyPoints == 0)
-		std::cout << "ClapTrap " << _name  << "It has no energy, so it cannot attack" <<std::endl;
+		std::cout << "ClapTrap " << _name  << " It has no energy, so it cannot attack" <<std::endl;
 	else {
 		_energyPoints--;
 		std::cout << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
@@ -36,13 +36,13 @@ void ClapTrap::attack(const std::string &target) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (_hitPoints <= 0)
-		std::cout << "ClapTrap " << _name << "It has no life, so it cannot be repaired" << std::endl;
+		std::cout << "ClapTrap " << _name << " It has no life, so it cannot be repaired" << std::endl;
 	else if (_energyPoints <= 0)
-		std::cout << "ClapTrap " << _name << "It has no energy, so it cannot be reparired" << std::endl;
+		std::cout << "ClapTrap " << _name << " It has no energy, so it cannot be reparired" << std::endl;
 	else if (_hitPoints > 0 && _energyPoints > 0) {
 		_energyPoints--;
 		_hitPoints += amount;
-		std::cout << "ClapTrap " << _name << "Has been repaired" << std::endl;
+		std::cout << "ClapTrap " << _name << " Has been repaired" << std::endl;
 	}
 }
 
