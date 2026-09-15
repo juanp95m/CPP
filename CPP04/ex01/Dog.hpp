@@ -6,6 +6,8 @@
 
 class Dog : public Animal {
 
+	private:
+		Brain *ObjBrain;
 	public:
 		Dog();
 		Dog(const Dog& copy);
@@ -13,8 +15,6 @@ class Dog : public Animal {
 		virtual ~Dog();
 		void makeSound() const;
 
-	private:
-		Brain *ObjBrain;
 };
 
 #endif
