@@ -20,7 +20,7 @@ int main() {
 		human3.decrementGrade();
 		std::cout << "Despues: " << human3 << std::endl;
 	} catch (std::exception & e) {
-		std::cout << "Excepcion: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	// Decrementar al limite: human1 tiene grado 150, debe lanzar excepcion
@@ -28,7 +28,7 @@ int main() {
 		std::cout << "Intentando decrementar a: " << human1 << std::endl;
 		human1.decrementGrade();
 	} catch (std::exception & e) {
-		std::cout << "Excepcion capturada: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	// Incrementar a human2: de 2 a 1 (permitido)
@@ -37,7 +37,7 @@ int main() {
 		human2.incrementGrade();
 		std::cout << "Despues: " << human2 << std::endl;
 	} catch (std::exception & e) {
-		std::cout << "Excepcion: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	// Incrementar al limite: human2 tiene grado 1, debe lanzar excepcion
@@ -45,7 +45,7 @@ int main() {
 		std::cout << "Intentando incrementar a: " << human2 << std::endl;
 		human2.incrementGrade();
 	} catch (std::exception & e) {
-		std::cout << "Excepcion capturada: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << "\n=== 3. Pruebas de error en instanciacion ===" << std::endl;
@@ -55,7 +55,7 @@ int main() {
 		std::cout << "Intentando instanciar con grado 0:" << std::endl;
 		Bureaucrat person1("NEO", 0);
 	} catch (std::exception & e) {
-		std::cout << "Excepcion capturada: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	// Caso: Rango demasiado bajo (> 150)
@@ -63,7 +63,7 @@ int main() {
 		std::cout << "Intentando instanciar con grado 1000:" << std::endl;
 		Bureaucrat person2("Bob Esponja", 1000);
 	} catch (std::exception & e) {
-		std::cout << "Excepcion capturada: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 
 	return 0;
