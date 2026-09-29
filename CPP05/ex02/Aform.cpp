@@ -1,5 +1,6 @@
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm() : _name("Default AForm"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150) {}
 
@@ -52,7 +53,7 @@ std::ostream& operator<<(std::ostream& out, const AForm& Aform) {
 	out << "Grade required to sign: " << Aform.getGradeToSigned() << std::endl;
 	out << "Grade required to execute: " << Aform.getGradeToExecute() << std::endl;
 
-return out;
+	return out;
 
 }
 
