@@ -66,3 +66,11 @@ const char* AForm::GradeTooHighException::what() const throw() {
 const char* AForm::GradeTooLowException::what() const throw() {
 	return "Grade too low.";
 } 
+
+void AForm::execute(Bureaucrat const & executor) const {
+    if (!this->getIsSigned())
+        throw AForm::FormNotSignedException();
+    if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
+    this->executeAction(); // Llama dinámicamente a la acción de la hija
+}
