@@ -61,11 +61,13 @@ const char* AForm::GradeTooHighException::what() const throw() {
 	return "Grade too high.";
 }
 
-
-
 const char* AForm::GradeTooLowException::what() const throw() {
 	return "Grade too low.";
 } 
+
+const char* AForm::FormNotSignedException::what() const throw() {
+    return "Form is not signed!";
+}
 
 void AForm::execute(Bureaucrat const & executor) const {
     if (!this->getIsSigned())
