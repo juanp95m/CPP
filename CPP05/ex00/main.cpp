@@ -14,6 +14,7 @@ int main() {
 
 	std::cout << "\n=== 2. Pruebas de incremento y decremento ===" << std::endl;
 
+	std::cout << "------------Decrementando-----------" << std::endl;
 	// Decrementar a human3 (pasa de 2 a 3)
 	try {
 		std::cout << "Antes: " << human3 << std::endl;
@@ -23,6 +24,8 @@ int main() {
 		std::cout << e.what() << std::endl;
 	}
 
+	std::cout << "------------------------------------" << std::endl;
+
 	// Decrementar al limite: human1 tiene grado 150, debe lanzar excepcion
 	try {
 		std::cout << "Intentando decrementar a: " << human1 << std::endl;
@@ -30,6 +33,8 @@ int main() {
 	} catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}
+
+	std::cout << "\n------------Incrementando-----------" << std::endl;
 
 	// Incrementar a human2: de 2 a 1 (permitido)
 	try {
@@ -39,6 +44,8 @@ int main() {
 	} catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}
+
+		std::cout << "------------------------------------" << std::endl;
 
 	// Incrementar al limite: human2 tiene grado 1, debe lanzar excepcion
 	try {
