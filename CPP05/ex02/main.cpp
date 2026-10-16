@@ -2,42 +2,73 @@
 #include "ShrubberyCreatingForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include <cstdlib>
-#include <ctime>
+
 
 int main() {
-    std::srand(std::time(NULL)); // Inicializa semilla aleatoria para Robotomy
+	std::srand(std::time(NULL));
+	Bureaucrat boss("El Jefe", 1);
+	Bureaucrat manager("Encargado", 40);
+	Bureaucrat intern("Becario", 150);
+	std::cout << "\n==============================================" << std::endl;
+	std::cout << "  1. TEST: ShrubberyCreatingForm (Sign 145, Exec 137)" << std::endl;
+	std::cout << "==============================================" << std::endl;
+	{
+		ShrubberyCreatingForm shrub("jardin");
 
-    Bureaucrat boss("El Jefe", 1);
-    Bureaucrat manager("Encargado", 40);
-    Bureaucrat intern("Becario", 140);
+		std::cout << "\n[ERRORS]" << std::endl;
 
-    std::cout << "\n=== 1. Prueba: ShrubberyCreationForm ===" << std::endl;
-    ShrubberyCreatingForm shrub("jardin");
-    
-    // Intento 1: ejecutar sin firmar
-    boss.executeForm(shrub);
+		boss.executeForm(shrub);
 
-    // Intento 2: firmar y ejecutar
-    intern.signForm(shrub);
-    intern.executeForm(shrub); // Becario (140) no tiene rango (requiere 137)
-    manager.executeForm(shrub); // Encargado (40) sí puede ejecutarlo
+		Bureaucrat invalid("Becario", 146);
+		invalid.signForm(shrub);
 
-    std::cout << "\n=== 2. Prueba: RobotomyRequestForm ===" << std::endl;
-    RobotomyRequestForm robot("Bender");
-    
-    manager.signForm(robot); // Requiere 72 para firmar
-    manager.executeForm(robot); // Encargado (40) puede ejecutarlo (requiere 45)
-    manager.executeForm(robot); // Segunda prueba para ver aleatoriedad
+		std::cout << "\n[SUCCESS]" << std::endl;
+		intern.signForm(shrub);
+		manager.signForm(shrub);
+		manager.executeForm(shrub);
+	}
 
-    std::cout << "\n=== 3. Prueba: PresidentialPardonForm ===" << std::endl;
-    PresidentialPardonForm pardon("Arthur Dent");
+	std::cout << "\n==============================================" << std::endl;
+	std::cout << "  2. TEST: RobotomyRequestForm (Sign 72, Exec 45)" << std::endl;
+	std::cout << "==============================================" << std::endl;
+	{
+		RobotomyRequestForm robot("Bender");
 
-    manager.signForm(pardon); // Encargado (40) no tiene rango para firmar (requiere 25)
-    boss.signForm(pardon);
-    manager.executeForm(pardon); // Encargado no puede ejecutar (requiere 5)
-    boss.executeForm(pardon); // El Jefe (1) lo ejecuta
+		std::cout << "\n[ERRORS]" << std::endl;
 
-    std::cout << "\n=== Fin de pruebas ===" << std::endl;
-    return 0;
+		manager.executeForm(robot);
+
+
+		intern.signForm(robot);
+
+		std::cout << "\n[SUCCESS]" << std::endl;
+		manager.signForm(robot);
+		intern.executeForm(robot);
+		manager.executeForm(robot);
+		boss.executeForm(robot);
+	}
+
+	std::cout << "\n==============================================" << std::endl;
+	std::cout << "  3. TEST: PresidentialPardonForm (Sign 25, Exec 5)" << std::endl;
+	std::cout << "==============================================" << std::endl;
+	{
+		PresidentialPardonForm pardon("Arthur Dent");
+
+		std::cout << "\n[ERRORS]" << std::endl;
+
+		boss.executeForm(pardon);
+
+		manager.signForm(pardon);
+
+		std::cout << "\n[SUCCESS]" << std::endl;
+		boss.signForm(pardon);
+		manager.executeForm(pardon);
+		boss.executeForm(pardon);
+	}
+
+	std::cout << "\n==============================================" << std::endl;
+	std::cout << "  END OF TESTING" << std::endl;
+	std::cout << "==============================================" << std::endl;
+
+	return 0;
 }

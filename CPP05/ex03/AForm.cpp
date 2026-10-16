@@ -5,7 +5,7 @@
 AForm::AForm() : _name("Default AForm"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150) {}
 
 AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-	std::cout << "AForm's parameters constructor called" << std::endl;
+	std::cout << "AForm's parameters constructor called to create: " << _name << std::endl;
 	if (gradeToExecute < 1 || gradeToSign < 1)
 		throw AForm::GradeTooHighException();
 	if (gradeToExecute > 150 || gradeToSign > 150)
@@ -21,7 +21,7 @@ AForm& AForm::operator=(const AForm& copy) {
 }
 
 AForm::~AForm(){
-	std::cout << "AForm's destructor called" << std::endl;
+	std::cout << "AForm's destructor called " << _name << std::endl;
 }
 
 const std::string& AForm::getName() const {
@@ -66,13 +66,13 @@ const char* AForm::GradeTooLowException::what() const throw() {
 } 
 
 const char* AForm::FormNotSignedException::what() const throw() {
-    return "Form is not signed!";
+	return "Form is not signed!";
 }
 
 void AForm::execute(Bureaucrat const & executor) const {
-    if (!this->getIsSigned())
-        throw AForm::FormNotSignedException();
-    if (executor.getGrade() > this->getGradeToExecute())
-        throw AForm::GradeTooLowException();
-    this->executeAction(); // Llama dinámicamente a la acción de la hija
+	if (!this->getIsSigned())
+		throw AForm::FormNotSignedException();
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw AForm::GradeTooLowException();
+	this->executeAction();
 }

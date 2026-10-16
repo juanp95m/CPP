@@ -17,20 +17,21 @@ void ShrubberyCreatingForm::executeAction() const {
 	std::ofstream file((this->_target + "_shrubbery").c_str());
 	if (!file.is_open())
 		throw ShrubberyCreatingForm::FileOpenException();
-	file << "     ccee88oo          "    << std::endl;
-	file << " C8O8O8Q8PoOb o8oo     "    << std::endl;
-	file << " dOB69QO8PdUOpugoO9bD  "    << std::endl;
-	file << " CgggbU8OU qOp qOdoUOdcb "  << std::endl;
-	file << "   6OuU  /p u gcoUodpP "    << std::endl;
-	file << "     \\|/   douUP     "     << std::endl;
-	file << "       \\||||/       "     << std::endl;
-	file << "        |||||         "     << std::endl;
-	file << "        |||||         "     << std::endl;
-	file << "        |||||         "     << std::endl;
-	file << "        |||||      "       << std::endl;
+	file << "     ccee88oo                 ccee88oo    "          << std::endl;
+	file << " C8O8O8Q8PoOb o8oo        C8O8O8Q8PoOb o8oo   "      << std::endl;
+	file << " dOB69QO8PdUOpugoO9bD     dOB69QO8PdUOpugoO9bD "     << std::endl;
+	file << " CgggbU8OU qOp qOdoUOdcb  CgggbU8OU qOp qOdoUOdcb"   << std::endl;
+	file << "   6OuU  /p u gcoUodpP       6OuU  /p u gcoUodpP"    << std::endl;
+	file << "     \\|/   douUP               \\|/   douUP  "      << std::endl;
+	file << "       \\||||/                    \\||||/  "         << std::endl;
+	file << "        |||||                      ||||| "           << std::endl;
+	file << "        |||||                      ||||| "           << std::endl;
+	file << "        |||||                      ||||| "           << std::endl;
+	file << "        |||||                      |||||  "          << std::endl;
 
 	file.close();
 }
+
 
 const char* ShrubberyCreatingForm::FileOpenException::what() const throw() {
     return "Could not open or create the shrubbery file.";

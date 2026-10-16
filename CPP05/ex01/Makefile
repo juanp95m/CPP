@@ -14,6 +14,9 @@ $(NAME): $(OBJ)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+test : all
+	./$(NAME)
+
 clean:
 	rm -f $(OBJ)
 
@@ -22,4 +25,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test

@@ -4,7 +4,7 @@
 Form::Form() : _name("Default Form"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150) {}
 
 Form::Form(const std::string& name, int gradeToSign, int gradeToExecute) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-	std::cout << "Form's parameters constructor called" << std::endl;
+	std::cout << "Form's parameters constructor called to create: " << _name << std::endl;
 	if (gradeToExecute < 1 || gradeToSign < 1)
 		throw Form::GradeTooHighException();
 	if (gradeToExecute > 150 || gradeToSign > 150)

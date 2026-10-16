@@ -6,7 +6,7 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) : _name(copy._name) , _grade(copy._grade) {
-	std::cout << "Bureaucrat's copy constructor called" << std::endl;
+	std::cout << "Bureaucrat's copy constructor called to create: " << _name << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat& copy) {
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << "Bureaucrat's parameters constructor called" << std::endl;
+	std::cout << "Bureaucrat's parameters constructor called to create: " << _name << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -76,13 +76,13 @@ void Bureaucrat::signForm(AForm& form) {
 }
 
 void Bureaucrat::executeForm(AForm const& form) const {
-    try {
-        form.execute(*this);
-    }
-    catch (const std::exception& e) {
-        std::cout << this->_name << " couldn't execute " 
-                  << form.getName() << " because " << e.what() << std::endl;
-        return;
-    }
-    std::cout << this->_name << " executed " << form.getName() << std::endl;
+	try {
+		form.execute(*this);
+	}
+	catch (const std::exception& e) {
+		std::cout << this->_name << " couldn't execute " 
+				  << form.getName() << " because " << e.what() << std::endl;
+		return;
+	}
+	std::cout << this->_name << " executed " << form.getName() << std::endl;
 }
