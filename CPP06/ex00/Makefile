@@ -14,15 +14,11 @@ $(NAME): $(OBJ)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-test: all
-	./$(NAME)
-
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f *_shrubbery
 
 re: fclean all
 
