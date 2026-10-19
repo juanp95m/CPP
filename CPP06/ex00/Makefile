@@ -14,6 +14,9 @@ $(NAME): $(OBJ)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+test: all
+	./$(NAME)
+
 clean:
 	rm -f $(OBJ)
 
