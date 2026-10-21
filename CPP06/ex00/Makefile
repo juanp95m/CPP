@@ -15,7 +15,30 @@ $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 test: all
-	./$(NAME)
+	./$(NAME) 'c'        
+	./$(NAME) 'a'        
+	./$(NAME) '*'        
+	./$(NAME) 0          
+	./$(NAME) 42         
+	./$(NAME) -42        
+	./$(NAME) 2147483647 
+	./$(NAME) -2147483648
+	./$(NAME) 0.0f       
+	./$(NAME) 4.2f       
+	./$(NAME) -4.2f      
+	./$(NAME) 0.0        
+	./$(NAME) 42.0       
+	./$(NAME) 42.42      
+	./$(NAME) nan
+	./$(NAME) nanf
+	./$(NAME) +inf
+	./$(NAME) -inf
+	./$(NAME) +inff
+	./$(NAME) -inff
+	./$(NAME) 2147483648 
+	./$(NAME) hello      
+	./$(NAME) 128        
+	./$(NAME) 0          
 
 clean:
 	rm -f $(OBJ)
@@ -25,4 +48,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test

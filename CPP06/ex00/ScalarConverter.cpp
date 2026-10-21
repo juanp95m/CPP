@@ -14,8 +14,9 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy) {
 ScalarConverter::~ScalarConverter(){};
 
 
-static bool isPseudoLiteral(const std::string& str){
-	if (str == "-inff" || str == "+inff" || str == "nanf" || str == "inf" || str == "+inf"  || str == "nan")
+static bool isPseudoLiteral(const std::string& str) {
+	if (str == "-inff" || str == "+inff" || str == "inff" || str == "nanf" ||
+		str == "-inf"  || str == "+inf"  || str == "inf"  || str == "nan")
 		return true;
 	else
 		return false;
