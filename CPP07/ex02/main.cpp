@@ -15,7 +15,7 @@ int main(void) {
 		std::cout << intArr[i] << " ";
 	std::cout << std::endl;
 
-	// Asignamos valores
+
 	for (unsigned int i = 0; i < intArr.size(); ++i)
 		intArr[i] = (i + 1) * 10;
 
@@ -26,7 +26,7 @@ int main(void) {
 
 	std::cout << "--- 3. Prueba de copia profunda (Deep Copy) ---" << std::endl;
 	Array<int> copyArr = intArr;
-	copyArr[0] = 999; // Modificamos solo la copia
+	copyArr[0] = 999; 
 
 	std::cout << "Original intArr[0]: " << intArr[0] << " (debe seguir siendo 10)" << std::endl;
 	std::cout << "Copia copyArr[0]:   " << copyArr[0] << " (debe ser 999)" << std::endl << std::endl;
