@@ -1,12 +1,10 @@
 #include "iter.hpp"
 
-// Función que recibe por referencia modificable (T &)
 template <typename T>
 void plusOne(T &val) {
 	val += 1;
 }
 
-// Función que recibe por referencia constante (const T &)
 template <typename T>
 void printElement(const T &val) {
 	std::cout << val << " ";
@@ -21,7 +19,6 @@ int main(void) {
 	::iter(numbers, numLen, printElement<int>);
 	std::cout << std::endl;
 
-	// Modificamos los valores
 	::iter(numbers, numLen, plusOne<int>);
 
 	std::cout << "Incrementado (+1): ";
@@ -33,7 +30,7 @@ int main(void) {
 	const std::size_t strLen = 4;
 
 	std::cout << "Palabras: ";
-	// Funciona perfectamente con arrays const porque printElement recibe const T &
+
 	::iter(words, strLen, printElement<std::string>);
 	std::cout << std::endl;
 
