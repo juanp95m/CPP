@@ -8,13 +8,14 @@
 # include <limits>
 # include <iterator>
 # include <iostream>
+# include <set>
 
 
 class Span {
 	
 	private:
 		unsigned int 		_maxSize;
-		std::vector<int> 	_numbers;
+		std::multiset<int> 	_numbers;
 
 	public:
 		Span();
@@ -34,8 +35,8 @@ class Span {
 		// Comprobamos la distancia del rango a insertar
 		if (_numbers.size() + std::distance(begin, end) > _maxSize)
 			throw std::out_of_range("Adding this range exceeds the maximum capacity of Span");
-		_numbers.insert(_numbers.end(), begin, end);
-	}
+		_numbers.insert(begin, end);
+		}
 
 };
 
