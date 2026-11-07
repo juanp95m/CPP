@@ -1,4 +1,4 @@
-NAME = Espan
+NAME = Span
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
