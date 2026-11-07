@@ -16,6 +16,7 @@ int main()
 	{
 		std::vector<int>::iterator it = easyfind(vec, 20);
 		std::cout << "Encontrado en vector: " << *it << std::endl;
+		std::cout << "Posición: " << std::distance(vec.begin(), it) << std::endl;
 	}
 	catch (const std::exception &e)
 	{
@@ -43,6 +44,7 @@ int main()
 	{
 		std::list<int>::iterator it = easyfind(lst, 15);
 		std::cout << "Encontrado en list: " << *it << std::endl;
+		std::cout << "Posicion: " << std::distance(lst.begin(), it) << std::endl;
 	}
 	catch (const std::exception &e)
 	{
@@ -57,6 +59,7 @@ int main()
 	{
 		std::vector<int>::const_iterator it = easyfind(constVec, 10);
 		std::cout << "Encontrado en const vector: " << *it << std::endl;
+		std::cout << "Posicion: " << std::distance(constVec.begin(), it) << std::endl;
 	}
 	catch (const std::exception &e)
 	{

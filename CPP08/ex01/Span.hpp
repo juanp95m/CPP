@@ -2,10 +2,10 @@
 # define SPAN_HPP
 
 # include <algorithm>
-# include <vector>
-# include <exception>
+
+
 # include <stdexcept>
-# include <limits>
+
 # include <iterator>
 # include <iostream>
 # include <set>
