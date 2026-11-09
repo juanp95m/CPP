@@ -27,7 +27,9 @@ int main()
 		MutantStack<int>::iterator itend = mstack.end();
 
 		++itstart;
+		std::cout << "donde estoy? " << *itstart << std::endl;
 		--itstart;
+		std::cout << "donde estoy? " << *itstart << std::endl;
 
 		std::cout << "Elementos iterados:" << std::endl;
 		while (itstart != itend)
