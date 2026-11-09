@@ -23,17 +23,17 @@ int main()
 		// [...]
 		mstack.push(0);
 
-		MutantStack<int>::iterator it = mstack.begin();
-		MutantStack<int>::iterator ite = mstack.end();
+		MutantStack<int>::iterator itstart = mstack.begin();
+		MutantStack<int>::iterator itend = mstack.end();
 
-		++it;
-		--it;
+		++itstart;
+		--itstart;
 
 		std::cout << "Elementos iterados:" << std::endl;
-		while (it != ite)
+		while (itstart != itend)
 		{
-			std::cout << *it << std::endl;
-			++it;
+			std::cout << *itstart << std::endl;
+			++itstart;
 		}
 		std::stack<int> s(mstack);
 	}
@@ -57,19 +57,42 @@ int main()
 		// [...]
 		mlist.push_back(0);
 
-		std::list<int>::iterator it = mlist.begin();
-		std::list<int>::iterator ite = mlist.end();
+		std::list<int>::iterator itstart = mlist.begin();
+		std::list<int>::iterator itend = mlist.end();
 
-		++it;
-		--it;
+		++itstart;
+		--itstart;
 
 		std::cout << "Elementos iterados:" << std::endl;
-		while (it != ite)
+		while (itstart != itend)
 		{
-			std::cout << *it << std::endl;
-			++it;
+			std::cout << *itstart << std::endl;
+			++itstart;
 		}
 	}
+
+	std::cout << "\n--- Test con const_iterator ---" << std::endl;
+{
+	MutantStack<int> mstack;
+	mstack.push(10);
+	mstack.push(20);
+	mstack.push(30);
+
+	// Creamos una referencia constante a la pila
+	const MutantStack<int> &const_stack = mstack;
+
+	// Aquí el compilador obliga a usar const_iterator
+	MutantStack<int>::const_iterator citstart = const_stack.begin();
+	MutantStack<int>::const_iterator citend = const_stack.end();
+
+	std::cout << "Lectura constante:" << std::endl;
+	while (citstart != citend)
+	{
+		std::cout << *citstart << std::endl; // Lectura permitida
+		// *cit = 42; // <-- Si descomentas esta línea, el compilador debe dar error
+		++citstart;
+	}
+}
 
 	return 0;
 }
